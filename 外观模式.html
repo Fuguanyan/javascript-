@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>外观模式</title>
+</head>
+<body>
+    <div>
+        <div id="myinput">点我点我</div>
+    </div>
+    <!-- 写家庭作业 -->
+    <!-- 调用一个方法，发现，调用了多个方法 -->
+    <script>
+        document.onclick = function(e){
+            e.preventDefault();
+            if(e.target !== document.getElementById('myinput')){
+                hidePageAlert()
+            }
+        }
+        function hidePageAlert(){
+            // 隐藏提示弹窗
+        }
+        // onclick 这个事件，DOM0级的事件。
+        document.onclick = function(){}
+        // DOM2级事件 addEventListener  老版本的IE浏览器（IE9），attachEvent
+        // DOM2级，onclick
+        var addMyEvent = function(el, ev, fn){
+            // DOM2 addEventListener
+            if (el.addEventListener) {
+                el.addEventListener(ev, fn, false);
+                console.log('走addEventListener')
+            } else if (el.attachEvent) {
+                // 不支持addEventListener，支持attachEvent
+                el.attachEvent('on'+ev, fn)
+            } else {
+                el['on' + ev] = fn
+            }
+        }
+        var myinput = document.getElementById('myinput');
+        addMyEvent(myinput, 'click', function(){
+            console.log('绑定一个事件')
+        })
+    </script>
+</body>
+</html>
