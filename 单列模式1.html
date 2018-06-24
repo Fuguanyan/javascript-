@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单例模式</title>
+</head>
+<body>
+    <script>
+        // 定义：保证一个类仅有一个实例，并提供一个访问它的全局访问点。
+        // 用一个变量来标识是否已经为某个类创建了对象。如果是，则在下一次获取该类的时候，直接返回之前创建的对象
+        var Singleton = function(name){
+            this.name = name;
+            this.instance = null
+        }
+        
+        Singleton.prototype.getName = function(){
+            alert(name)
+        }
+        
+        Singleton.getInstance = function ( name ) {
+            if (!this.instance) {
+                this.instance = new Singleton( name )
+            }
+            return this.instance
+        }
+
+        var a = Singleton.getInstance('a');
+        var b = Singleton.getInstance('b');
+
+        alert( a === b )
+        var a = {
+            
+        }
+        window.a = {
+            b:function(){
+                alert(1);
+            }
+        }
+        window.a = {
+            b:function(){
+                alert(2);
+            }
+        }
+        var MyApp = {
+            event : {
+
+            }
+            
+        }
+        // 闭包
+        // 核心：确保只有一个实例，并提供全局访问
+    </script>
+</body>
+</html>
