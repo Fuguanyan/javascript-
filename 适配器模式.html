@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>适配器模式</title>
+</head>
+<body>
+    <script>
+    // 定义：将一个类（对象）的接口（方法、属性）转化成另一个接口，以满足用户需求，使类（对象）直接接口不兼容问题得到解决
+    // 一种是修改原来的接口
+    // 另一种，写一个转接器，通过转接器的形式，来适配
+    // 输入一个数值，16进制，8998
+    // function doThing(name, title, age, height, width){
+
+    // }
+    function doThing(obj){
+        var _obj = {
+            name : 'duyi',
+            title : '设计模式',
+            age : 10,
+            height : 10000,
+            width : 100000
+        }
+        for(var i in _obj){
+            _obj[i] = obj[i] || _obj[i]
+        }
+        console.log(_obj)
+    }
+    var myObj = {
+        name : 'myself',
+        title : '11123'
+    }
+    doThing(myObj)
+
+    
+    </script>
+</body>
+</html>
